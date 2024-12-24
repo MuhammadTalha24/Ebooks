@@ -54,6 +54,13 @@ const TrendingBooks = () => {
                             </div>
                         </div>
                     ))}
+                    {
+                        onlyFourBooks == 0 && (
+                            <h1 className='text-center'>
+                                No Book Available
+                            </h1>
+                        )
+                    }
                 </div>
             </div>
         </section>

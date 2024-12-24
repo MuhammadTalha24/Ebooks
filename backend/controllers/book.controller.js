@@ -80,7 +80,7 @@ export const deleteBook = async (req, res) => {
             console.warn(`Cover image file not found: ${book.coverUrl}`);
         }
 
-        res.status(200).json({ message: "Book and associated files deleted successfully" });
+        res.status(200).json({ message: "Book Deleted Successfully" });
     } catch (err) {
         console.error("Error deleting book:", err);
         res.status(500).json({ error: "Error deleting book" });

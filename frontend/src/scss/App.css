@@ -11982,4 +11982,8 @@ textarea.form-control-lg {
   /* Required for line-clamp */
   overflow: hidden;
   /* Hide the rest of the text */
+}
+
+.card-img-top {
+  height: 200px;
 }/*# sourceMappingURL=App.css.map */

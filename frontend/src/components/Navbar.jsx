@@ -25,6 +25,7 @@ const Navbar = () => {
     };
 
     const user = JSON.parse(localStorage.getItem('user'));
+    const adminEmail = 'koech3659@gmail.com'
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary py-3">
             <div className="container">
@@ -34,6 +35,12 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
+
+                        {user?.email == adminEmail && (
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/admin">Admin</Link>
+                            </li>
+                        )}
                         <li className="nav-item">
                             <Link className="nav-link" to="/ebooks">Explore Books</Link>
                         </li>

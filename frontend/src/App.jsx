@@ -9,6 +9,9 @@ import Books from './pages/Books'
 import Footer from './components/Footer'
 import Categories from './pages/Categories'
 import BookDetail from './pages/BookDetail'
+import Dashboard from './pages/dashboard/Dashboard'
+import ProtectedRoute from './pages/ProtectedRoutes'
+import EditBook from './pages/dashboard/EditBook'
 
 const App = () => {
   const location = useLocation(); // Get current route
@@ -16,6 +19,8 @@ const App = () => {
   // Conditionally render the Navbar based on the current route
   const showNavbar = !['/login', '/register'].includes(location.pathname);
 
+
+  const allowedEmail = 'koech3659@gmail.com'
   return (
     <>
       {showNavbar && <Navbar />}
@@ -27,6 +32,22 @@ const App = () => {
         <Route path='/ebooks' element={<Books />}></Route>
         <Route path='/categories' element={<Categories />}></Route>
         <Route path='/book_detail/:id' element={<BookDetail />}></Route>
+        <Route path='/admin' element={
+          <ProtectedRoute allowedEmail={allowedEmail}>
+            <Dashboard />
+
+
+          </ProtectedRoute>
+
+
+        }></Route>
+        <Route path='admin/edit/:id' element={
+          <ProtectedRoute allowedEmail={allowedEmail}>
+            <EditBook />
+
+
+          </ProtectedRoute>
+        }></Route>
       </Routes>
       {showNavbar && <Footer />}
     </>
