@@ -15,7 +15,7 @@ const port = process.env.PORT
 
 app.use(
     cors({
-        origin: 'https://eb-frontend-chi.vercel.app/',  // Set this to your frontend URL
+        origin: 'https://eb-frontend-chi.vercel.app',  // Set this to your frontend URL
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,  // Allow credentials (cookies)
     })
