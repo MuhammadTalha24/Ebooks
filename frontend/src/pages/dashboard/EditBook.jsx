@@ -7,10 +7,10 @@ const EditBook = () => {
     const { id } = useParams(); // Get book ID from the URL params
     const navigate = useNavigate(); // For navigating back after editing
 
-    const API_URL =
-        import.meta.env.VITE_NODE_ENV == 'development'
-            ? import.meta.env.VITE_API_URL
-            : import.meta.env.VITE_API_URL_PROD;
+    // const API_URL =
+    //     import.meta.env.VITE_NODE_ENV == 'development'
+    //         ? import.meta.env.VITE_API_URL
+    //         : import.meta.env.VITE_API_URL_PROD;
     const [bookData, setBookData] = useState({
         title: '',
         author: '',
@@ -24,7 +24,7 @@ const EditBook = () => {
     useEffect(() => {
         const getBookData = async () => {
             try {
-                const response = await axios.get(`${API_URL}/api/v1/book/${id}`);
+                const response = await axios.get(`https://ebooks-backend-iota.vercel.app/api/v1/book/${id}`);
 
                 setBookData({
                     title: response.data.title,
@@ -61,7 +61,7 @@ const EditBook = () => {
         if (cover) formData.append('cover', cover);
 
         try {
-            const response = await axios.put(`${API_URL}/api/v1/book/${id}`, formData, {
+            const response = await axios.put(`https://ebooks-backend-iota.vercel.app/api/v1/book/${id}`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 withCredentials: true,
             });

@@ -5,14 +5,14 @@ import axios from 'axios';
 const Books = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);  // State for loading indicator
-    const API_URL =
-        import.meta.env.VITE_NODE_ENV == 'development'
-            ? import.meta.env.VITE_API_URL
-            : import.meta.env.VITE_API_URL_PROD;
+    // const API_URL =
+    //     import.meta.env.VITE_NODE_ENV == 'development'
+    //         ? import.meta.env.VITE_API_URL
+    //         : import.meta.env.VITE_API_URL_PROD;
 
     const getAllBooks = async () => {
         try {
-            const response = await axios.get(`${API_URL}/api/v1/book/`);
+            const response = await axios.get('https://ebooks-backend-iota.vercel.app//api/v1/book/');
             setBooks(response.data);
         } catch (error) {
             console.log(error);
@@ -60,7 +60,7 @@ const Books = () => {
                             <div className="col-md-3 col-sm-6 mb-4" key={index}>
                                 <div className="card bg-white h-100 shadow-sm">
                                     <img
-                                        src={`${API_URL}/${book.coverUrl}`}
+                                        src={`https://ebooks-backend-iota.vercel.app/${book.coverUrl}`}
                                         className="card-img-top"
                                         alt={`${book.title} cover`}
                                     />

@@ -9,16 +9,16 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
-    const API_URL =
-        import.meta.env.VITE_NODE_ENV == 'development'
-            ? import.meta.env.VITE_API_URL
-            : import.meta.env.VITE_API_URL_PROD;
+    // const API_URL =
+    //     import.meta.env.VITE_NODE_ENV == 'development'
+    //         ? import.meta.env.VITE_API_URL
+    //         : import.meta.env.VITE_API_URL_PROD;
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post(
-                `${API_URL}/api/v1/user/login`,
+                `https://ebooks-backend-iota.vercel.app/api/v1/user/login`,
                 { email, password },
                 { withCredentials: true }  // Add this line to send cookies
             );

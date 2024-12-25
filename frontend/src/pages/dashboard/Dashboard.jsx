@@ -11,10 +11,10 @@ const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('allBooks');
     const [books, setBooks] = useState([]);
 
-    const API_URL =
-        import.meta.env.VITE_NODE_ENV == 'development'
-            ? import.meta.env.VITE_API_URL
-            : import.meta.env.VITE_API_URL_PROD;
+    // const API_URL =
+    //     import.meta.env.VITE_NODE_ENV == 'development'
+    //         ? import.meta.env.VITE_API_URL
+    //         : import.meta.env.VITE_API_URL_PROD;
 
     const [bookData, setBookData] = useState({
         title: '',
@@ -48,7 +48,7 @@ const Dashboard = () => {
         formData.append('cover', cover);
 
         try {
-            const response = await axios.post(`${API_URL}/api/v1/book/add`, formData, {
+            const response = await axios.post(`https://ebooks-backend-iota.vercel.app/api/v1/book/add`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 withCredentials: true,
             });
@@ -68,7 +68,7 @@ const Dashboard = () => {
 
     const getAllBooks = async () => {
         try {
-            const response = await axios.get(`${API_URL}/api/v1/book/`);
+            const response = await axios.get(`https://ebooks-backend-iota.vercel.app/api/v1/book/`);
             setBooks(response.data);
         } catch (error) {
             console.log(error)
@@ -76,7 +76,7 @@ const Dashboard = () => {
     }
 
     const deleteBook = async (id) => {
-        const response = await axios.delete(`${API_URL}/api/v1/book/${id}`, { withCredentials: true })
+        const response = await axios.delete(`https://ebooks-backend-iota.vercel.app/api/v1/book/${id}`, { withCredentials: true })
         toast.success(response.data.message);
         getAllBooks()
     }
@@ -131,8 +131,8 @@ const Dashboard = () => {
                                             <td>{book.author}</td>
                                             <td style={{ maxWidth: '200px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{book.description}</td>
                                             <td>{book.genre}</td>
-                                            <td><a href={`${API_URL}/${book.pdfUrl}`} target="_blank" rel="noopener noreferrer">View PDF</a></td>
-                                            <td><img src={`${API_URL}/${book.coverUrl}`} alt={book.title} style={{ width: '50px' }} /></td>
+                                            <td><a href={`https://ebooks-backend-iota.vercel.app/${book.pdfUrl}`} target="_blank" rel="noopener noreferrer">View PDF</a></td>
+                                            <td><img src={`https://ebooks-backend-iota.vercel.app/${book.coverUrl}`} alt={book.title} style={{ width: '50px' }} /></td>
                                             <td className='align-middle text-center'><a style={{ cursor: "pointer" }} onClick={() => deleteBook(book._id)} className='text-danger me-2'><FaTrash /></a> <Link to={`/admin/edit/${book._id}`}><FaPencilAlt /></Link></td>
                                         </tr>
                                     ))}

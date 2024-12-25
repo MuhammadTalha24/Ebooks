@@ -4,16 +4,16 @@ import { FaBook } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 const Navbar = () => {
-    const API_URL =
-        import.meta.env.VITE_NODE_ENV == 'development'
-            ? import.meta.env.VITE_API_URL
-            : import.meta.env.VITE_API_URL_PROD;
+    // const API_URL =
+    //     import.meta.env.VITE_NODE_ENV == 'development'
+    //         ? import.meta.env.VITE_API_URL
+    //         : import.meta.env.VITE_API_URL_PROD;
     const handleLogout = async () => {
         // Remove user data from localStorage
         localStorage.removeItem('user');
 
         try {
-            const response = await axios.get(`${API_URL}/api/v1/user/logout`, {
+            const response = await axios.get(`https://ebooks-backend-iota.vercel.app/api/v1/user/logout`, {
                 withCredentials: true, // This ensures the cookies are sent with the request
             });
 

@@ -5,15 +5,15 @@ import { useParams } from 'react-router-dom';
 const BookDetail = () => {
     const { id } = useParams();  // Extracting the `id` from useParams correctly
     const [book, setBook] = useState({});
-    const API_URL =
-        import.meta.env.VITE_NODE_ENV === 'development'
-            ? import.meta.env.VITE_API_URL
-            : import.meta.env.VITE_API_URL_PROD;
+    // const API_URL =
+    //     import.meta.env.VITE_NODE_ENV === 'development'
+    //         ? import.meta.env.VITE_API_URL
+    //         : import.meta.env.VITE_API_URL_PROD;
 
     // Fetching single book details from API
     const getSingleBook = async () => {
         try {
-            const response = await axios.get(`${API_URL}/api/v1/book/${id}`);
+            const response = await axios.get(`https://ebooks-backend-iota.vercel.app/api/v1/book/${id}`);
             setBook(response.data); // Ensure you access the correct data object
         } catch (error) {
             console.error(error);
@@ -37,7 +37,7 @@ const BookDetail = () => {
                             <div className="col-md-4">
                                 {/* Book Cover */}
                                 <img
-                                    src={`${API_URL}/${book.coverUrl}`}
+                                    src={`https://ebooks-backend-iota.vercel.app/${book.coverUrl}`}
                                     alt={book.title}
                                     className="img-fluid h-100"
                                 />
@@ -55,7 +55,7 @@ const BookDetail = () => {
                                         <>
                                             {/* View PDF Button */}
                                             <a
-                                                href={`${API_URL}/${book.pdfUrl}`}
+                                                href={`https://ebooks-backend-iota.vercel.app/${book.pdfUrl}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="btn btn-success me-2"

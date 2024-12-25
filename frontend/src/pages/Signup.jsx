@@ -12,16 +12,16 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-    const API_URL =
-        import.meta.env.VITE_NODE_ENV == 'development'
-            ? import.meta.env.VITE_API_URL
-            : import.meta.env.VITE_API_URL_PROD;
+    // const API_URL =
+    //     import.meta.env.VITE_NODE_ENV == 'development'
+    //         ? import.meta.env.VITE_API_URL
+    //         : import.meta.env.VITE_API_URL_PROD;
 
     const registerForm = async (e) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post(`${API_URL}/api/v1/user/register`, {
+            const response = await axios.post('https://ebooks-backend-iota.vercel.app/api/v1/user/register', {
                 name,
                 email,
                 password,
