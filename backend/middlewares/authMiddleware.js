@@ -20,11 +20,5 @@ export const authMiddleware = (req, res, next) => {
     }
 }
 
-export const authorizeEmail = (req, res, next) => {
-    const allowedEmail = 'koech3659@gmail.com';
-    if (req.user.email !== allowedEmail) {
-        return res.status(403).json({ message: 'Access denied. Not authorized.' });
-    }
-    next();
-};
+
 
