@@ -12,7 +12,7 @@ const Books = () => {
 
     const getAllBooks = async () => {
         try {
-            const response = await axios.get('https://ebooks-backend-iota.vercel.app//api/v1/book/');
+            const response = await axios.get('https://ebooks-backend-iota.vercel.app/api/v1/book/');
             setBooks(response.data);
         } catch (error) {
             console.log(error);
