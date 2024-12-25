@@ -6,6 +6,10 @@ import bookRoutes from './api/books/book.routes.js'
 import cookieParser from "cookie-parser";
 import dbConnection from './config/dbConnection.js'
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 env.config()
 const app = express()
@@ -20,7 +24,9 @@ app.use(
         credentials: true,  // Allow credentials (cookies)
     })
 );
-app.use('/public', express.static(path.join(process.cwd(), 'public')));
+
+
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 
 app.use(cookieParser());
