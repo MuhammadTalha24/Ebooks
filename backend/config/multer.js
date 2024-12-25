@@ -5,10 +5,7 @@ import fs from "fs";
 // Define storage configuration
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const uploadPath =
-            file.fieldname === "pdf" ? "uploads/pdfs/" : "uploads/covers/";
-
-        // Ensure the directory exists
+        const uploadPath = path.join(process.cwd(), 'public', 'upload', file.fieldname === 'pdf' ? 'pdfs' : 'covers');
         if (!fs.existsSync(uploadPath)) {
             fs.mkdirSync(uploadPath, { recursive: true });
         }
@@ -18,6 +15,7 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + path.extname(file.originalname));
     },
 });
+
 
 // Initialize Multer with storage configuration
 const upload = multer({ storage });
