@@ -15,7 +15,7 @@ const port = process.env.PORT
 
 app.use(
     cors({
-        origin: "https://eb-frontend-eta.vercel.app",  // Set this to your frontend URL
+        origin: process.env.FRONTEND_URL,  // Set this to your frontend URL
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,  // Allow credentials (cookies)
     })
@@ -29,6 +29,9 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/v1/user', userRoutes)
 app.use('/api/v1/book', bookRoutes)
+app.get('/', (req, res) => {
+    res.send('Welcome App');
+})
 
 dbConnection().then(() => {
     app.listen(port, () => {
