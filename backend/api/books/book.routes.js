@@ -1,7 +1,7 @@
 import express from "express";
-import { addBook, getAllBooks, getBookById, deleteBook, editBook } from "../controllers/book.controller.js";
-import upload from "../utils/multer.js";
-import { authMiddleware, authorizeEmail } from "../middlewares/authMiddleware.js";
+import { addBook, getAllBooks, getBookById, deleteBook, editBook } from "./book.controller.js";
+import upload from "../../config/multer.js";
+import { authMiddleware, authorizeEmail } from "../../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.post("/add", authMiddleware, authorizeEmail, upload.fields([

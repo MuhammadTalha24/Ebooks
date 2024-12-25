@@ -1,4 +1,4 @@
-import Book from "../models/book.model.js";
+import Book from './book.model';
 import fs from 'fs'
 
 export const addBook = async (req, res) => {

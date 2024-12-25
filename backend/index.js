@@ -1,10 +1,10 @@
 import express from 'express'
 import env from 'dotenv'
 import cors from 'cors'
-import userRoutes from './routes/user.routes.js'
-import bookRoutes from './routes/book.routes.js'
+import userRoutes from './api/users/user.routes.js'
+import bookRoutes from './api/books/book.routes.js'
 import cookieParser from "cookie-parser";
-import dbConnection from './database/dbConnection.js'
+import dbConnection from './config/dbConnection.js'
 import path from 'path';
 
 env.config()

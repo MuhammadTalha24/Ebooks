@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import User from "../models/user.model.js";
+import User from "./user.model";
 import bcrypt from 'bcryptjs'
 import env from 'dotenv'
 
