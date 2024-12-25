@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React from 'react';
 import { FaBook } from "react-icons/fa6";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 const Navbar = () => {
+    const navigate = useNavigate()
     // const API_URL =
     //     import.meta.env.VITE_NODE_ENV == 'development'
     //         ? import.meta.env.VITE_API_URL
@@ -18,7 +19,7 @@ const Navbar = () => {
             });
 
             toast.success(response.data.message || "Logout Successfully!");
-            window.location.reload(); // Reload to update the navbar
+            navigate('/') // Reload to update the navbar
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong. Please try again.");
         }

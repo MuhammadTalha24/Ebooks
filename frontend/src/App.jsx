@@ -33,20 +33,10 @@ const App = () => {
         <Route path='/categories' element={<Categories />}></Route>
         <Route path='/book_detail/:id' element={<BookDetail />}></Route>
         <Route path='/admin' element={
-          <ProtectedRoute allowedEmail={allowedEmail}>
-            <Dashboard />
-
-
-          </ProtectedRoute>
-
-
+          <Dashboard />
         }></Route>
         <Route path='admin/edit/:id' element={
-          <ProtectedRoute allowedEmail={allowedEmail}>
-            <EditBook />
-
-
-          </ProtectedRoute>
+          <EditBook />
         }></Route>
       </Routes>
       {showNavbar && <Footer />}
