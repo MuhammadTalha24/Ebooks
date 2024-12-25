@@ -20,8 +20,9 @@ app.use(
         credentials: true,  // Allow credentials (cookies)
     })
 );
-app.use('/uploads/covers', express.static(path.resolve('uploads', 'covers')));
-app.use('/uploads/pdfs', express.static(path.resolve('uploads', 'pdfs')));
+app.use('/uploads/covers', express.static(path.join(process.cwd(), 'public', 'uploads', 'covers')));
+app.use('/uploads/pdfs', express.static(path.join(process.cwd(), 'public', 'uploads', 'pdfs')));
+
 app.use(cookieParser());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
